@@ -51,10 +51,6 @@ def correct_performance_notes_tags(xml_markup: BeautifulSoup) -> BeautifulSoup:
     for tag in performance_note_tags_and_hymn:
         # Итерация по списку "performance_note_tags_and_hymn". "tag_content" —
         # строка, обернутая в тег "performance_note".
-        
-        # Новый модуль для поиска жанров
-        
-
         _merge_performance_note_head(tag)
 
     return xml_markup

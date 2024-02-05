@@ -1,12 +1,22 @@
-from app import open_xml_file, clean_xml_markup, write_xml_file, correct_performance_notes_tags
+from app import (
+    open_xml_file,
+    clean_xml_markup,
+    write_xml_file,
+    correct_performance_notes_tags,
+    define_genre_in_hymn_tags,
+)
 
-input_path = 'input.xml'
-output_path = 'output.xml'
+input_path = "input.xml"
+output_path = "output.xml"
+
 
 def main():
     xml_file = open_xml_file(input_path)
-    processed_xml_markup = correct_performance_notes_tags(clean_xml_markup(xml_file))
+    processed_xml_markup = define_genre_in_hymn_tags(
+        correct_performance_notes_tags(clean_xml_markup(xml_file))
+    )
     write_xml_file(output_path, processed_xml_markup)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
