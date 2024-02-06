@@ -12,12 +12,15 @@ output_path = "output.xml"
 
 
 def main():
-    xml_file = open_xml_file(input_path)
-    processed_xml_markup = define_genre_in_hymn_tags(
-        define_models_in_hymns(
-            correct_performance_notes_tags(clean_xml_markup(xml_file))
-        )
-    )
+    # Input
+    xml_file = clean_xml_markup(open_xml_file(input_path))
+
+    # Process
+    correct_performance_notes_tags(xml_file)
+    processed_xml_markup = define_models_in_hymns(xml_file)
+    define_genre_in_hymn_tags(xml_file)
+    
+    # Output
     write_xml_file(output_path, processed_xml_markup)
 
 

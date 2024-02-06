@@ -36,7 +36,7 @@ def _set_genre_to_hymn_tag(
 
 def _define_genre_in_hymn_tag(hymn_tag: Tag, genre: str) -> str | None:
     # "head_tag_content" — переменная, которая указывает на строку, заключенную в тег "head" элемента "hymn".
-    head_tag_content = hymn_tag.head.string
+    head_tag_content = hymn_tag.head.text
 
     # Предобработка строки. На этом этапе удаляются служебные символы (диакритические знаки и проч. символы, которые не представляют буквы. Исключение — символы пробела.
     head_tag_content = clean_string(head_tag_content)
