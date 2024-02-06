@@ -1,4 +1,5 @@
-def clean_string(string:str) -> str:
+def clean_string(string: str, *chars) -> str:
     string = "".join(
-        [char for char in string.strip() if char.isalpha() or char == " "])
+        [char for char in string.lower().strip() if char.isalpha() or char in [" ", *chars]]
+    )
     return string

@@ -4,6 +4,7 @@ from app import (
     write_xml_file,
     correct_performance_notes_tags,
     define_genre_in_hymn_tags,
+    define_models_in_hymns,
 )
 
 input_path = "input.xml"
@@ -13,7 +14,9 @@ output_path = "output.xml"
 def main():
     xml_file = open_xml_file(input_path)
     processed_xml_markup = define_genre_in_hymn_tags(
-        correct_performance_notes_tags(clean_xml_markup(xml_file))
+        define_models_in_hymns(
+            correct_performance_notes_tags(clean_xml_markup(xml_file))
+        )
     )
     write_xml_file(output_path, processed_xml_markup)
 

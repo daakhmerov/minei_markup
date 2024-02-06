@@ -6,6 +6,7 @@ from app.process.tags.hymn.correct_performance_notes_tags import (
     correct_performance_notes_tags,
 )
 from app.process.genres.define_genre import define_genre_in_hymn_tags
+from app.process.genres.define_model import define_models_in_hymns
 from app.utils.read_json import genres
 
 
