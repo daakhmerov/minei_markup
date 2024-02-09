@@ -2,23 +2,40 @@ import re
 from bs4 import BeautifulSoup, Tag
 from app.process.preprocess.clean_string import clean_string
 
+
 def _tag_model_inside_head_tag(hymn_tag: Tag, model_string: str) -> None:
+    """_summary_
+
+    Args:
+        hymn_tag (Tag): _description_
+        model_string (str): _description_
+    """    
+
     # Variables
     head_tag = hymn_tag.head
-    model_tag_markup = f'<model>{model_string}</model>'
+    model_tag_markup = f"<model>{model_string}</model>"
 
     # Process
     head_tag_markup = str(head_tag).replace(model_string, model_tag_markup)
 
     # Create new tag and delete outdated
-    updated_head_tag = BeautifulSoup(head_tag_markup, 'lxml-xml').head
-    
+    updated_head_tag = BeautifulSoup(head_tag_markup, "lxml-xml").head
+
     # Add new tag and delete old
     head_tag.decompose()
     hymn_tag.insert(1, updated_head_tag)
-    
+
 
 def _define_model(hymn_tag: Tag) -> None:
+    """_summary_
+
+    Args:
+        hymn_tag (Tag): _description_
+
+    Returns:
+        _type_: _description_
+    """    
+
     # Variables
     head_tag = hymn_tag.head
     head_tag_content = head_tag.string.split(".")
@@ -37,6 +54,15 @@ def _define_model(hymn_tag: Tag) -> None:
 
 
 def define_models_in_hymns(xml_markup: BeautifulSoup) -> BeautifulSoup:
+    """_summary_
+
+    Args:
+        xml_markup (BeautifulSoup): _description_
+
+    Returns:
+        BeautifulSoup: _description_
+    """    
+
     # Variables
     hymns_tag = xml_markup.find_all("hymn")
 
